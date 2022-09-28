@@ -19,7 +19,7 @@ MES = st.selectbox("MES LLEGADA", options=["ENERO", "FEBRERO", "MARZO", "ABRIL",
 DÍA_SEMANA = st.selectbox("WEEKDAY_LLEGADA", options=["LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO", "DOMINGO"])
 SEMANA_DEL_AÑO = st.slider("WEEK_LLEGADA", 1, 48, 1)
 
-
+#A partir de aquí cambiar#
 age = st.slider("Edad", 1, 100, 1)
 p_class = st.selectbox("Clase", options=['Primera clase', 'Segunda clase', 'Tercera clase'])
 
