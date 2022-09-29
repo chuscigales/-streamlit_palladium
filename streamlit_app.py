@@ -4,8 +4,11 @@ import pickle
 
 
 # load the model from disk
-model_filename = 'rf.pkl'
+model_filename = '/content/drive/MyDrive/TFM - Palladium/Streamlit/rf.pkl'
 loaded_model = pickle.load(open(model_filename, 'rb'))
+# load the scaler from disk
+scaler_filename = 'model_filename'
+loaded_scaler = pickle.load(open(model_filename, 'rb'))
 
 st.title("Palladium")
 st.write("""
@@ -27,28 +30,3 @@ TIPO_CLIENTE_3 = st.selectbox("TIPO_CLIENTE_3", options=['1', '0'])
 TIPO_CLIENTE_9 = st.selectbox("TIPO_CLIENTE_9", options=['1', '0'])
 
 HOTEL = st.selectbox("ID_HOTEL", options=['15', '30', '94'])
-
-
-
-
-
-#age = st.slider("Edad", 1, 100, 1)
-#p_class = st.selectbox("Clase", options=['Primera clase', 'Segunda clase', 'Tercera clase'])
-
-#sex = 0 if sex == 'Hombre' else 1
-
-#f_class = 1 if p_class == 'Primera clase' else 0
-#s_class = 1 if p_class == 'Segunda clase' else 0
-#t_class = 1 if p_class == 'Tercera clase' else 0
-
-input_data = loaded_scaler.transform([[NOCHES, ADRE, PAX, LEAD_TIME, MES, DÍA_SEMANA, SEMANA_DEL_AÑO, TIPO_CLIENTE_1, TIPO_CLIENTE_2, TIPO_CLIENTE_3, TIPO_CLIENTE_9]])
-prediction = loaded_model.predict(input_data)
-predict_probability = loaded_model.predict_proba(input_data)
-
-if name != "":
-    if prediction[0] == 1:
-        st.write(f":+1: El pasajero {name} **SI** hubiera sobrevivido con una probabilidad \
-        de {round(predict_probability[0][1] * 100, 3)}%")
-    else:
-        st.write(f":cry: El pasajero {name} **NO** hubiera sobrevivido con una probabilidad \
-        de {round(predict_probability[0][0] * 100, 3)}%")
