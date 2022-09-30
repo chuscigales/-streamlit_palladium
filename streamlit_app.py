@@ -1,9 +1,5 @@
 import streamlit as st
 import pickle
-[server]
-enableCORS = false
-enableXsrfProtection = false
-enableWebsocketCompression = false
 
 
 # load the model from disk
